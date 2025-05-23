@@ -3,8 +3,8 @@ package client
 import (
 	"errors"
 
-	"github.com/AcalephStorage/consul-alerts/Godeps/_workspace/src/github.com/opsgenie/opsgenie-go-sdk/logging"
-	policy "github.com/AcalephStorage/consul-alerts/Godeps/_workspace/src/github.com/opsgenie/opsgenie-go-sdk/policy"
+	"github.com/honzatlusty/consul-alerts/Godeps/_workspace/src/github.com/opsgenie/opsgenie-go-sdk/logging"
+	policy "github.com/honzatlusty/consul-alerts/Godeps/_workspace/src/github.com/opsgenie/opsgenie-go-sdk/policy"
 )
 
 const (
