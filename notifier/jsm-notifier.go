@@ -57,35 +57,5 @@ func (jsm JSMNotifier) createAlias(message Message) string {
 }
 
 func (jsm *JSMNotifier) sendAlertRequest(title string, status string, content string, alias string) bool {
-	log.Debug(fmt.Sprintf("JSM alert alias: %s", alias))
-
-    requestBody := {
-        "message": title,
-        "alias": alias,
-        "description": content,
-        "details": {
-          "messageType": status
-        },
-        "sources": "consul",
-        "entity": jsm.ClusterName,
-    }
-
-    // notifier.BaseURL => https://api.atlassian.com
-    // notifier.Endpoint => /jsm/ops/integration/v2/alerts
-    endpoint := fmt.Sprintf("%s%s%s%s", notifier.BaseURL, notifier.Endpoint, "?apiKey=", JSM.ApiKey)
-    if res, err := http.Post(endpoint, "application/json", bytes.NewBuffer(requestBody)); err != nil {
-        log.Println("Unable to send data to JSM endpoint:", err)
-        return false
-    } else {
-        defer res.Body.Close()
-        statusCode := res.StatusCode
-        if statusCode != 200 {
-            body, _ := ioutil.ReadAll(res.Body)
-            log.Println("Unable to notify JSM endpoint:", string(body))
-            return false
-        } else {
-            log.Println("JSM notification sent.")
-            return true
-        }
-    }
+        return true
 }
