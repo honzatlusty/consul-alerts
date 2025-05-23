@@ -578,6 +578,10 @@ func (c *ConsulAlertClient) ILertNotifier() *notifier.ILertNotifier {
 	return c.config.Notifiers.ILert
 }
 
+func (c *ConsulAlertClient) JSMNotifier() *notifier.JSMNotifier {
+        return c.config.Notifiers.JSM
+}
+
 func (c *ConsulAlertClient) registerHealthCheck(key string, health *Check) {
 
 	log.Printf(
