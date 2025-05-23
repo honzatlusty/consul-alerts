@@ -24,27 +24,7 @@ func (jsm *JSMNotifier) Copy() Notifier {
 //Notify sends messages to the endpoint notifier
 func (jsm *JSMNotifier) Notify(messages Messages) bool {
 
-	overallStatus, pass, warn, fail := messages.Summary()
-
-	for _, message := range messages {
-		title := fmt.Sprintf("\n%s:%s:%s is %s.", message.Node, message.Service, message.Check, message.Status)
-		alias := jsm.createAlias(message)
-		content := fmt.Sprintf(header, jsm.ClusterName, overallStatus, fail, warn, pass)
-		content += fmt.Sprintf("\n%s:%s:%s is %s.", message.Node, message.Service, message.Check, message.Status)
-		content += fmt.Sprintf("\n%s", message.Output)
-
-		// create the alert
-		switch {
-		case message.IsCritical():
-		case message.IsWarning():
-		case message.IsPassing():
-			ok = jsm.sendAlertRequest(title, message.Status, content, alias) && ok
-		default:
-			ok = false
-			log.Warn("Message was not either IsCritical, IsWarning or IsPasssing. No notification was sent for ", alias)
-		}
-	}
-	return ok
+	return true
 }
 
 func (jsm JSMNotifier) createAlias(message Message) string {
