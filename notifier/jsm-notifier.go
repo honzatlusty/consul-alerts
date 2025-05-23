@@ -1,10 +1,5 @@
 package notifier
 
-import (
-	"fmt"
-	log "github.com/honzatlusty/consul-alerts/Godeps/_workspace/src/github.com/Sirupsen/logrus"
-)
-
 type JSMNotifier struct {
 	Enabled     bool
 	ClusterName string `json:"cluster-name"`
